@@ -4,6 +4,7 @@ import config from '../config';
 
 const myAxios = axios.create({
     baseURL: config.API_URL,
+    timeout:3500
 });
 
 
