@@ -3,23 +3,24 @@ import { FormSelect, FormControl, FormLabel } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 function Dialog() {
-  const { response, refetch } = useAxios({
-    url: "/getCatalog",
-    method: "GET"
-  });
 
+  const { response, doRequest } = useAxios();
   const [catalog, setCatalog] = useState({});
   const [selectedTable, setSelectedTable] = useState(null);
 
-  useEffect(() => {
+  useEffect(async () => {
+
+    await doRequest({url:'/getCatalog', method:'get'})
     if (response) {
       setCatalog(response.catalog);
     }
   }, [response]);
 
+
   const handleTableChange = (e) => {
     setSelectedTable(e.target.value);
   };
+
 
   return (
     <>

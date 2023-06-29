@@ -7,46 +7,30 @@ const myAxios = axios.create({
 });
 
 
-const useAxios = (configObj) => {
-    const {
-        method,
-        url,
-        requestConfig = {}
-    } = configObj;
-
+const useAxios = () => {
 
     const [response, setResponse] = useState([]);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
-    const [reload, setReload] = useState(0);
 
-    const refetch = () => setReload(prev => prev + 1);
+    const doRequest = async (requestConfig) => {
+        try {
 
-    useEffect(() => {
-        //let isMounted = true;
+            const { url, method } = requestConfig;
 
-        const fetchData = async () => {
-            try {
-                const res = await myAxios[method.toLowerCase()](url, {
-                    ...requestConfig,
-                });
-                setResponse(res.data);
-                console.log(res.data)
-            } catch (err) {
-                console.log(err.message);
-                setError(err.message);
-            } finally {
-                console.log('finally');
-                setLoading(false);
-            }
+            const res = await myAxios[method.toLowerCase()](url, {
+                ...requestConfig,
+            });
+            setResponse(res.data);
+        } catch (err) {
+            setError(err.message);
+        } finally {
+            setLoading(false);
         }
-        // call the function
-        fetchData();
+    }
 
-        // eslint-disable-next-line
-    }, [reload]);
 
-    return {response, error, loading, refetch};
+    return { response, loading,error, doRequest };
 }
 
 export default useAxios
