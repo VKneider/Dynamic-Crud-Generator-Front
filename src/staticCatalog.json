@@ -1,75 +1,75 @@
 {
-    "status": "SUCCESS",
-    "catalog": {
-      "cintas": {
-        "pelicula_id": "number",
-        "id": "number",
-        "estado": "boolean"
-      },
-      "peliculas_actores": {
-        "actor_id": "number",
-        "pelicula_id": "number"
-      },
-      "lista_espera": {
-        "socio_id": "number",
-        "pelicula_id": "number"
-      },
-      "socios": {
-        "id": "number",
-        "nombres": "string",
-        "apellidos": "string"
-      },
-      "socios_generos": {
-        "socio_id": "number",
-        "genero_id": "number"
-      },
-      "generos": {
-        "id": "number",
-        "nombre": "string"
-      },
-      "peliculas": {
-        "id": "number",
-        "duracion": "number",
-        "director_id": "number",
-        "titulo": "string"
-      },
-      "peliculas_generos": {
-        "pelicula_id": "number",
-        "genero_id": "number"
-      },
-      "prestamos": {
-        "socio_id": "number",
-        "cinta_id": "number",
-        "fecha": "Date"
-      },
-      "log": {
-        "id_log": "number",
-        "type": "string",
-        "obj": "string",
-        "method": "string",
-        "msg": "string",
-        "log_time": "string"
-      },
-      "socios_directores": {
-        "socio_id": "number",
-        "director_id": "number"
-      },
-      "directores": {
-        "id": "number",
-        "nombres": "string",
-        "apellidos": "string",
-        "sexo": "string"
-      },
-      "socios_actores": {
-        "socio_id": "number",
-        "actor_id": "number"
-      },
-      "actores": {
-        "id": "number",
-        "nombres": "string",
-        "apellidos": "string",
-        "sexo": "string"
-      }
+  "status": "SUCCESS",
+  "catalog": {
+    "cintas": {
+      "pelicula_id": "number",
+      "id": "number",
+      "estado": "boolean"
     },
-    "message": "Catalogo obtenido correctamente"
-  }
+    "peliculas_actores": {
+      "actor_id": "number",
+      "pelicula_id": "number"
+    },
+    "lista_espera": {
+      "socio_id": "number",
+      "pelicula_id": "number"
+    },
+    "socios": {
+      "id": "number",
+      "nombres": "string",
+      "apellidos": "string"
+    },
+    "socios_generos": {
+      "socio_id": "number",
+      "genero_id": "number"
+    },
+    "generos": {
+      "id": "number",
+      "nombre": "string"
+    },
+    "peliculas": {
+      "id": "number",
+      "duracion": "number",
+      "director_id": "number",
+      "titulo": "string"
+    },
+    "peliculas_generos": {
+      "pelicula_id": "number",
+      "genero_id": "number"
+    },
+    "prestamos": {
+      "socio_id": "number",
+      "cinta_id": "number",
+      "fecha": "Date"
+    },
+    "log": {
+      "id_log": "number",
+      "type": "string",
+      "obj": "string",
+      "method": "string",
+      "msg": "string",
+      "log_time": "string"
+    },
+    "socios_directores": {
+      "socio_id": "number",
+      "director_id": "number"
+    },
+    "directores": {
+      "id": "number",
+      "nombres": "string",
+      "apellidos": "string",
+      "sexo": "string"
+    },
+    "socios_actores": {
+      "socio_id": "number",
+      "actor_id": "number"
+    },
+    "actores": {
+      "id": "number",
+      "nombres": "string",
+      "apellidos": "string",
+      "sexo": "string"
+    }
+  },
+  "message": "Catalogo obtenido correctamente"
+}
