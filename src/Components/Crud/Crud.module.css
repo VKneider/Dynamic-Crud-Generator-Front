@@ -1,0 +1,18 @@
+.flexContainer {
+  display: flex;
+  margin-top: 2rem;
+}
+
+.flexChild {
+  flex: 1;
+}
+
+.menu {
+  background-color: white;
+  flex: 1 1 0;
+}
+
+.main {
+  background-color: green;
+  flex: 3 1 0;
+}
