@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { CatalogContext } from '../Context/CatalogContext.jsx';
+import { jsx } from '@emotion/react';
 
 export default function useCatalog(tableName) {
   const { catalog } = useContext(CatalogContext);
@@ -7,13 +8,11 @@ export default function useCatalog(tableName) {
   const catalogTables = [];
 
   for (const key in catalog) {
-    catalogTables.push(key);
+    if (key !== 'log') catalogTables.push(key);
   }
-  console.log(catalogTables);
 
   if (tableName) {
     const tableInputs = catalog[tableName];
-    console.log(tableInputs);
     return { tableInputs, catalogTables };
   } else {
     return { catalogTables };

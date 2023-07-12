@@ -32,7 +32,6 @@ export const CatalogProvider = ({ children }) => {
 */
   return (
     <CatalogContext.Provider value={{ catalog, loading }}>
-      {console.log(`CatalogContext.jsx: ${JSON.stringify(catalog)}`)}
       {children}
     </CatalogContext.Provider>
   );
