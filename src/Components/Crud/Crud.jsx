@@ -6,11 +6,18 @@ import MenuInputs from '../MenuInputs/MenuInputs';
 import { CatalogContext } from '../../Context/CatalogContext';
 import useCatalog from '../../Hooks/useCatalog';
 import { DataGridTable } from '../DataGridTable/DataGridTable';
+import useTableData from '../../Hooks/useTableData';
 
 export default function Crud() {
   const { catalogTables } = useCatalog();
   const [selectedTable, setSelectedTable] = useState(catalogTables[0]);
   const [rowData, setRowData] = useState({});
+
+  // data for DataGridTable
+  const { rows, columns } = useTableData(selectedTable);
+  function handleRowClick(e) {
+    setRowData(e.row);
+  }
 
   return (
     <div className={Styles.flexContainer}>
@@ -35,8 +42,10 @@ export default function Crud() {
       <main className={` ${Styles.main}  `}>
         {selectedTable && (
           <DataGridTable
+            rowsData={rows}
+            columnsData={columns}
+            handleRowClick={handleRowClick}
             selectedTable={selectedTable}
-            setRowData={setRowData}
           />
         )}
       </main>

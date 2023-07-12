@@ -5,17 +5,13 @@ import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import useTableData from '../../Hooks/useTableData';
 
-export const DataGridTable = ({ setRowData, selectedTable }) => {
-  const { rows, columns } = useTableData(selectedTable);
-
+export const DataGridTable = ({ rowsData, columnsData, handleRowClick }) => {
   return (
     <Box sx={{ height: 800, width: '100%' }}>
       <DataGrid
-        columns={columns}
-        rows={rows}
-        onRowClick={(e) => {
-          setRowData(e.row);
-        }}
+        columns={columnsData}
+        rows={rowsData}
+        onRowClick={handleRowClick}
         initialState={{
           pagination: {
             paginationModel: {
