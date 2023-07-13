@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Box, Button, TextField } from '@mui/material';
-import useCatalog from '../../Hooks/useCatalog';
+import { Box, Button, TextField, Alert, AlertTitle } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import useQuery from '../../Hooks/useQuery';
 
@@ -8,7 +7,9 @@ export default function Query() {
   const [query, setQuery] = useState('');
   const [inputText, setInputText] = useState('');
   const queryRef = useRef();
-  const { rows, columns, runQuery } = useQuery();
+  const { rows, columns, runQuery, error } = useQuery();
+
+  console.log('error', error);
 
   function handleChange(e) {
     setInputText(e.target.value);
@@ -44,6 +45,12 @@ export default function Query() {
           }}
         />
       </Box>
+      {error && (
+        <Alert severity='error'>
+          <AlertTitle>Error</AlertTitle>
+          {error}
+        </Alert>
+      )}
     </div>
   );
 }

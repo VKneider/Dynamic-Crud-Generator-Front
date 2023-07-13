@@ -5,6 +5,7 @@ export default function useQuery() {
   const { loading, data, error, fetchData } = useFetch(
     'http://localhost:3003/runCustomQuery',
   );
+
   const [rows, setRows] = useState([]);
   const [columns, setColumns] = useState([]);
   const runQuery = async (query) => {
@@ -33,5 +34,5 @@ export default function useQuery() {
     }
   }, [data]);
 
-  return { rows, columns, runQuery };
+  return { rows, columns, error, runQuery };
 }

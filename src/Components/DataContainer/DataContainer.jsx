@@ -1,12 +1,19 @@
 import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import useTableData from '../../Hooks/useTableData';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { TableContext } from '../../Context/TableContext';
+import useQuery from '../../Hooks/useQuery';
 
 export default function DataContainer() {
   const { selectedTable, setSelectedRowData } = useContext(TableContext);
-  const { rows, columns } = useTableData(selectedTable);
+  const { rows, columns, runQuery } = useQuery();
+
+  useEffect(() => {
+    async function fetchData() {
+      await runQuery(`SELECT * FROM ${selectedTable}`);
+    }
+    if (selectedTable) fetchData();
+  }, [selectedTable]);
 
   function handleRowClick(e) {
     setSelectedRowData(e.row);
