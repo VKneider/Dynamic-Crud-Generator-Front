@@ -3,10 +3,9 @@ import useFetch from '../Hooks/useFetch';
 
 export const CatalogContext = createContext();
 
-//  eslint-disable-next-line
 export const CatalogProvider = ({ children }) => {
   const [catalog, setCatalog] = useState({});
-  const { loading, data, error, fetchData } = useFetch(
+  const { loading, data, fetchData } = useFetch(
     'http://localhost:3003/catalog',
   );
 

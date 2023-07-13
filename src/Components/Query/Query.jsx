@@ -1,10 +1,9 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import { Box, Button, TextField, Alert, AlertTitle } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import useQuery from '../../Hooks/useQuery';
 
 export default function Query() {
-  const [query, setQuery] = useState('');
   const [inputText, setInputText] = useState('');
   const queryRef = useRef();
   const { rows, columns, runQuery, error } = useQuery();
@@ -28,8 +27,7 @@ export default function Query() {
         onChange={handleChange}
       />
       <Button variant='outlined' onClick={handleClick}>
-        {' '}
-        Run Query{' '}
+        Run Query
       </Button>
 
       <Box sx={{ height: 800, width: '100%' }}>

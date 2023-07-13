@@ -9,8 +9,7 @@ const useFetch = (url) => {
     try {
       setLoading(true);
       const options = {
-        // eslint-disable-next-line
-        method: method,
+        method,
         headers: {
           'Content-Type': 'application/json',
         },
