@@ -1,22 +1,21 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { DataGridTable } from '../DataGridTable/DataGridTable';
-import { Button, TextField } from '@mui/material';
+import { Box, Button, TextField } from '@mui/material';
 import useCatalog from '../../Hooks/useCatalog';
+import { DataGrid } from '@mui/x-data-grid';
+import useQuery from '../../Hooks/useQuery';
 
 export default function Query() {
   const [query, setQuery] = useState('');
-  const { catalogTables } = useCatalog();
   const [inputText, setInputText] = useState('');
-
   const queryRef = useRef();
+  const { rows, columns, runQuery } = useQuery();
 
   function handleChange(e) {
     setInputText(e.target.value);
   }
 
-  function handleClick() {
-    setQuery(queryRef.current.value);
-    console.log(queryRef.current.value);
+  async function handleClick() {
+    await runQuery(queryRef.current.value);
   }
 
   return (
@@ -31,12 +30,20 @@ export default function Query() {
         {' '}
         Run Query{' '}
       </Button>
-      <DataGridTable
-        rowsData={[]}
-        columnsData={[]}
-        selectedTable={catalogTables[0]}
-        handleRowClick={() => {}}
-      />
+
+      <Box sx={{ height: 800, width: '100%' }}>
+        <DataGrid
+          columns={columns}
+          rows={rows}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: 20,
+              },
+            },
+          }}
+        />
+      </Box>
     </div>
   );
 }

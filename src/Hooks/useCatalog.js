@@ -1,20 +1,31 @@
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import { CatalogContext } from '../Context/CatalogContext.jsx';
-import { jsx } from '@emotion/react';
 
 export default function useCatalog(tableName) {
   const { catalog } = useContext(CatalogContext);
+  const [catalogTables, setCatalogTables] = useState([]);
+  const [tableInputs, setTableInputs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const catalogTables = [];
+  useEffect(() => {
+    const tables = [];
+    for (const key in catalog) {
+      if (key !== 'log') tables.push(key);
+    }
 
-  for (const key in catalog) {
-    if (key !== 'log') catalogTables.push(key);
-  }
+    setCatalogTables(tables);
+  }, [catalog, tableName]);
 
-  if (tableName) {
-    const tableInputs = catalog[tableName];
-    return { tableInputs, catalogTables };
-  } else {
-    return { catalogTables };
-  }
+  useEffect(() => {
+    if (tableName) {
+      if (tableName.length === 0) {
+        setTableInputs([]);
+      } else {
+        setTableInputs(catalog[tableName]);
+      }
+      setIsLoading(false);
+    }
+  }, [tableName, catalog]);
+
+  return { tableInputs, catalogTables, isLoading };
 }

@@ -1,30 +1,37 @@
 import { useEffect, useState } from 'react';
+import useFetch from './useFetch';
 
-export default function useQuery(query) {
-  const [response, setResponse] = useState([]);
-  const [error, setError] = useState(null);
+export default function useQuery() {
+  const { loading, data, error, fetchData } = useFetch(
+    'http://localhost:3003/runCustomQuery',
+  );
+  const [rows, setRows] = useState([]);
+  const [columns, setColumns] = useState([]);
+  const runQuery = async (query) => {
+    // eslint-disable-next-line
+    await fetchData('POST', { customQuery: query });
+  };
 
   useEffect(() => {
-    const getResponse = async () => {
-      try {
-        const url = `http://localhost:3003/runCustomQuery`;
-        const response = await fetch(url, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ customQuery: query }),
-        });
+    if (data) {
+      const updatedColumns = data.columns.map((input) => {
+        return {
+          field: input,
+          headerName: input,
+          editable: false,
+          width: 150,
+        };
+      });
 
-        const data = await response.json();
-        setResponse(data.result);
-      } catch (error) {
-        console.error('Error:', error);
-        setError(error);
-      }
-    };
-    getResponse();
-  }, [query]);
+      const updatedRows = data.rows.map((row, index) => {
+        row.id = index;
+        return row;
+      });
 
-  return { response, error };
+      setColumns(updatedColumns);
+      setRows(updatedRows);
+    }
+  }, [data]);
+
+  return { rows, columns, runQuery };
 }

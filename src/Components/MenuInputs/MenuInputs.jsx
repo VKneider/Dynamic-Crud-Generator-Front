@@ -1,18 +1,20 @@
-import { TextField } from '@mui/material';
+import { useContext, useEffect } from 'react';
+import { TableContext } from '../../Context/TableContext';
 import useCatalog from '../../Hooks/useCatalog';
-import { useState } from 'react';
 import Input from '../Input/Input';
 
-export default function MenuInputs({ rowData, selectedTable }) {
+export default function MenuInputs() {
+  const { selectedTable, selectedRowData } = useContext(TableContext);
   const { tableInputs } = useCatalog(selectedTable);
+
   return (
     <div>
-      {tableInputs.map((inputData, idx) => {
+      {tableInputs?.map((inputData, idx) => {
         return (
           <Input
             key={idx}
             inputData={inputData}
-            initialValue={rowData[inputData.fieldName]}
+            initialValue={selectedRowData[inputData.fieldName]}
           />
         );
       })}

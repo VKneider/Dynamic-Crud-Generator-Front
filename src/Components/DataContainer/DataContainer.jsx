@@ -1,16 +1,22 @@
-import useCatalog from '../../Hooks/useCatalog';
-import useAxios from '../../Hooks/useAxios';
-import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import useTableData from '../../Hooks/useTableData';
+import { useContext } from 'react';
+import { TableContext } from '../../Context/TableContext';
 
-export const DataGridTable = ({ rowsData, columnsData, handleRowClick }) => {
+export default function DataContainer() {
+  const { selectedTable, setSelectedRowData } = useContext(TableContext);
+  const { rows, columns } = useTableData(selectedTable);
+
+  function handleRowClick(e) {
+    setSelectedRowData(e.row);
+  }
+
   return (
     <Box sx={{ height: 800, width: '100%' }}>
       <DataGrid
-        columns={columnsData}
-        rows={rowsData}
+        columns={columns}
+        rows={rows}
         onRowClick={handleRowClick}
         initialState={{
           pagination: {
@@ -22,4 +28,4 @@ export const DataGridTable = ({ rowsData, columnsData, handleRowClick }) => {
       />
     </Box>
   );
-};
+}

@@ -1,14 +1,16 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import useCatalog from '../../Hooks/useCatalog';
+import { useContext } from 'react';
+import { TableContext } from '../../Context/TableContext';
 
-export default function MenuSelect({ selectedTable, setSelectedTable }) {
+export default function MenuSelect() {
   const { catalogTables } = useCatalog();
+  const { selectedTable, setSelectedTable } = useContext(TableContext);
 
   function handleTableChange(e) {
     setSelectedTable(e.target.value);
   }
 
-  const defaultValue = catalogTables[0];
   return (
     <div>
       <FormControl fullWidth>
@@ -16,7 +18,7 @@ export default function MenuSelect({ selectedTable, setSelectedTable }) {
         <Select
           labelId='demo-simple-select-label'
           id='demo-simple-select'
-          value={selectedTable}
+          value={selectedTable ?? ''}
           label='Tables'
           onChange={handleTableChange}
         >

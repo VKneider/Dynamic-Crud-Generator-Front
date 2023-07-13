@@ -1,0 +1,36 @@
+import { useState } from 'react';
+
+const useFetch = (url) => {
+  const [loading, setLoading] = useState(false);
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
+  const fetchData = async (method, body) => {
+    try {
+      setLoading(true);
+      const options = {
+        // eslint-disable-next-line
+        method: method,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      };
+
+      if (body) {
+        options.body = JSON.stringify(body);
+      }
+      const response = await fetch(url, options);
+      const responseData = await response.json();
+      setLoading(false);
+      setData(responseData);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return { loading, data, error, fetchData };
+};
+
+export default useFetch;
