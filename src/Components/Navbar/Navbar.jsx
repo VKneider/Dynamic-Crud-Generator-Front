@@ -24,15 +24,6 @@ export default function Navbar({ setActualPage }) {
       >
         Query
       </Button>
-      <Divider orientation='vertical' flexItem />
-      <Button
-        className='navbarBtn'
-        onClick={handleClick}
-        variant='text'
-        value='Logs'
-      >
-        Logs
-      </Button>
     </div>
   );
 }

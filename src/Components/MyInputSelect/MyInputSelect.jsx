@@ -5,9 +5,12 @@ export default function MyInputSelect({ label, iterable, value, setter }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (iterable) {
+    if (iterable && iterable[label]) {
       setLoading(false);
     }
+    return () => {
+      setLoading(true);
+    };
   }, [iterable]);
 
   return (
@@ -20,13 +23,15 @@ export default function MyInputSelect({ label, iterable, value, setter }) {
             id='demo-simple-select'
             value={value || ''}
             label={label}
-            onChange={setter}
+            onChange={(e) => setter(e, label)}
           >
-            {iterable.map((key) => (
-              <MenuItem key={key} value={key}>
-                {key}
-              </MenuItem>
-            ))}
+            {iterable &&
+              iterable[label] &&
+              iterable[label].map((key) => (
+                <MenuItem key={key} value={key}>
+                  {key}
+                </MenuItem>
+              ))}
           </Select>
         </FormControl>
       )}

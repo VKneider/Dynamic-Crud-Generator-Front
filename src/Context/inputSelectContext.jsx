@@ -18,6 +18,7 @@ export const InputSelectContextProvider = ({ children }) => {
       [fieldName]: e.target.value,
     }));
   }
+
   const { data, fetchData } = useForeignKeyData(tableInputs, selectedTable);
 
   useEffect(() => {
@@ -33,7 +34,7 @@ export const InputSelectContextProvider = ({ children }) => {
     if (data && data.length > 0) {
       setInputSelectData(data);
     }
-  }, [data, tableInputs]);
+  }, [data]);
 
   return (
     <InputSelectContext.Provider
@@ -41,6 +42,7 @@ export const InputSelectContextProvider = ({ children }) => {
         inputSelectData,
         actualSelectionData,
         handleSelectionDataChange,
+        setActualSelectionData,
       }}
     >
       {children}

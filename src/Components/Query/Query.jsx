@@ -8,8 +8,6 @@ export default function Query() {
   const queryRef = useRef();
   const { rows, columns, runQuery, error } = useQuery();
 
-  console.log('error', error);
-
   function handleChange(e) {
     setInputText(e.target.value);
   }

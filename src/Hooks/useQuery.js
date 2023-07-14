@@ -8,6 +8,7 @@ export default function useQuery() {
 
   const [rows, setRows] = useState([]);
   const [columns, setColumns] = useState([]);
+  const [status, setStatus] = useState('');
   const runQuery = async (query) => {
     await fetchData('POST', { customQuery: query });
   };
@@ -30,8 +31,9 @@ export default function useQuery() {
 
       setColumns(updatedColumns);
       setRows(updatedRows);
+      setStatus('success');
     }
   }, [data]);
 
-  return { rows, columns, error, runQuery };
+  return { rows, status, columns, error, runQuery };
 }

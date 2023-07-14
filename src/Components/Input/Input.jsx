@@ -2,7 +2,11 @@ import { TextField } from '@mui/material';
 import { useEffect, useState, useContext } from 'react';
 import { TableContext } from '../../Context/TableContext';
 
-export default function Input({ inputData, initialValue }) {
+export default function Input({
+  inputData,
+  initialValue,
+  setActualSelectionData,
+}) {
   const [value, setValue] = useState('');
   const [disabled, setDisabled] = useState(false);
 
@@ -38,8 +42,15 @@ export default function Input({ inputData, initialValue }) {
   return (
     <TextField
       label={inputData.fieldName}
+      type={inputData.type}
       value={value === false ? `${value}` : value || ''}
-      onChange={(e) => setValue(e.target.value)}
+      onChange={(e) => {
+        setValue(e.target.value);
+        setActualSelectionData((prev) => ({
+          ...prev,
+          [inputData.fieldName]: e.target.value,
+        }));
+      }}
       autoComplete='off'
       disabled={disabled}
     />
