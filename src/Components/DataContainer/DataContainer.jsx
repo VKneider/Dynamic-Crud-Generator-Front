@@ -1,4 +1,3 @@
-import { Box } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import { useContext, useEffect } from 'react';
 import { TableContext } from '../../Context/TableContext';
@@ -20,7 +19,7 @@ export default function DataContainer() {
   }
 
   return (
-    <Box sx={{ height: 800, width: '100%' }}>
+    <div style={{ height: '75vh' }}>
       <DataGrid
         columns={columns}
         rows={rows}
@@ -33,6 +32,6 @@ export default function DataContainer() {
           },
         }}
       />
-    </Box>
+    </div>
   );
 }

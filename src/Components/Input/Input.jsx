@@ -1,7 +1,7 @@
 import { TextField } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-export default function Input({ inputData, initialValue }) {
+export default function Input({ inputData, initialValue, disabled }) {
   const [value, setValue] = useState('');
 
   useEffect(() => {
@@ -11,8 +11,9 @@ export default function Input({ inputData, initialValue }) {
   return (
     <TextField
       label={inputData.fieldName}
-      value={value || ''}
+      value={`${value}` || ''}
       onChange={(e) => setValue(e.target.value)}
+      disabled={disabled}
     />
   );
 }
