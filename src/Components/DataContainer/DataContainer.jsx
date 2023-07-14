@@ -27,7 +27,7 @@ export default function DataContainer() {
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 20,
+              pageSize: 12,
             },
           },
         }}
