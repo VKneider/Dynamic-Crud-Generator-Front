@@ -1,9 +1,25 @@
 import './App.css';
-import Dialog from './Components/Dialog/Dialog';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
+import Navbar from './Components/Navbar/Navbar';
+import Crud from './Components/Crud/Crud';
+import Query from './Components/Query/Query';
 
 function App() {
-  return <Dialog />;
+  const [actualPage, setActualPage] = useState('Crud');
+
+  return (
+    <>
+      <Navbar setActualPage={setActualPage} />
+
+      {actualPage === 'Crud' ? (
+        <Crud />
+      ) : actualPage === 'Query' ? (
+        <Query />
+      ) : (
+        <div>Logs</div>
+      )}
+    </>
+  );
 }
 
 export default App;

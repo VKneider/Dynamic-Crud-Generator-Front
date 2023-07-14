@@ -1,75 +1,296 @@
 {
   "status": "SUCCESS",
   "catalog": {
-    "cintas": {
-      "pelicula_id": "number",
-      "id": "number",
-      "estado": "boolean"
-    },
-    "peliculas_actores": {
-      "actor_id": "number",
-      "pelicula_id": "number"
-    },
-    "lista_espera": {
-      "socio_id": "number",
-      "pelicula_id": "number"
-    },
-    "socios": {
-      "id": "number",
-      "nombres": "string",
-      "apellidos": "string"
-    },
-    "socios_generos": {
-      "socio_id": "number",
-      "genero_id": "number"
-    },
-    "generos": {
-      "id": "number",
-      "nombre": "string"
-    },
-    "peliculas": {
-      "id": "number",
-      "duracion": "number",
-      "director_id": "number",
-      "titulo": "string"
-    },
-    "peliculas_generos": {
-      "pelicula_id": "number",
-      "genero_id": "number"
-    },
-    "prestamos": {
-      "socio_id": "number",
-      "cinta_id": "number",
-      "fecha": "Date"
-    },
-    "log": {
-      "id_log": "number",
-      "type": "string",
-      "obj": "string",
-      "method": "string",
-      "msg": "string",
-      "log_time": "string"
-    },
-    "socios_directores": {
-      "socio_id": "number",
-      "director_id": "number"
-    },
-    "directores": {
-      "id": "number",
-      "nombres": "string",
-      "apellidos": "string",
-      "sexo": "string"
-    },
-    "socios_actores": {
-      "socio_id": "number",
-      "actor_id": "number"
-    },
-    "actores": {
-      "id": "number",
-      "nombres": "string",
-      "apellidos": "string",
-      "sexo": "string"
-    }
+    "categoria": [
+      {
+        "fieldName": "id_categoria",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "nombre_categoria",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "ciudad": [
+      {
+        "fieldName": "id_ciudad",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "nombre_ciudad",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_estado",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      }
+    ],
+    "cliente": [
+      {
+        "fieldName": "id_cliente",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "nombre_cliente",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "apellido_cliente",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "es_socio",
+        "type": "boolean",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_direccion",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      }
+    ],
+    "compra": [
+      {
+        "fieldName": "id_compra",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "id_distribuidor",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      },
+      {
+        "fieldName": "fecha_de_compra",
+        "type": "Date",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "compra_producto": [
+      {
+        "fieldName": "id_compra",
+        "type": "number",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "sku_producto",
+        "type": "string",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "cantidad_producto",
+        "type": "number",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "datos_cliente": [
+      {
+        "fieldName": "id_cliente",
+        "type": "number",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "correo_cliente",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "telefono_cliente",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "direccion": [
+      {
+        "fieldName": "id_direccion",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "calle",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "n_casa",
+        "type": "number",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_ciudad",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      }
+    ],
+    "distribuidor": [
+      {
+        "fieldName": "id_distribuidor",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "nombre_distribuidor",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "estado": [
+      {
+        "fieldName": "id_estado",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "nombre_estado",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "log": [
+      {
+        "fieldName": "id_log",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "log_time",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "type",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "obj",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "method",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "msg",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "producto": [
+      {
+        "fieldName": "sku",
+        "type": "string",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": false
+      },
+      {
+        "fieldName": "nombre_producto",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "precio",
+        "type": "number",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_categoria",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_distribuidor",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      }
+    ],
+    "venta": [
+      {
+        "fieldName": "id_venta",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "id_cliente",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      },
+      {
+        "fieldName": "fecha_de_venta",
+        "type": "Date",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "venta_producto": [
+      {
+        "fieldName": "id_venta",
+        "type": "number",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "sku_producto",
+        "type": "string",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "cantidad_producto",
+        "type": "number",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ]
   },
   "message": "Catalogo obtenido correctamente"
 }
