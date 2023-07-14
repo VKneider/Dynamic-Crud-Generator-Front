@@ -1,3 +1,4 @@
+import Styles from './Query.module.css';
 import React, { useState, useRef, useEffect } from 'react';
 import { Box, Button, TextField, Alert, AlertTitle } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
@@ -21,19 +22,24 @@ export default function Query() {
 
   return (
     <div>
-      <TextField
-        inputRef={queryRef}
-        label='Query'
-        value={inputText}
-        onChange={handleChange}
-      />
-      <Button variant='outlined' onClick={handleClick}>
-        {' '}
-        Run Query{' '}
-      </Button>
+      <div className={Styles.queryContainer}>
+        <TextField
+          inputRef={queryRef}
+          label='Query'
+          value={inputText}
+          onChange={handleChange}
+        />
+        <Button variant='outlined' onClick={handleClick}>
+          {' '}
+          Run Query{' '}
+        </Button>
+      </div>
 
-      <Box sx={{ height: 800, width: '100%' }}>
+      <Box
+        sx={{ height: 800, width: '100%', margin: '0 auto', padding: '2rem' }}
+      >
         <DataGrid
+          sx={{ backgroundColor: 'white' }}
           columns={columns}
           rows={rows}
           initialState={{

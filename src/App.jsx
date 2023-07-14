@@ -3,7 +3,6 @@ import Navbar from './Components/Navbar/Navbar';
 import { useContext, useState } from 'react';
 import Crud from './Components/Crud/Crud';
 import useCatalog from './Hooks/useCatalog';
-import Logs from './Components/Logs/Logs';
 import Query from './Components/Query/Query';
 import { CatalogContext } from './Context/CatalogContext';
 
@@ -20,7 +19,7 @@ function App() {
       ) : actualPage === 'Query' ? (
         <Query />
       ) : (
-        <Logs />
+        <div>logs</div>
       )}
     </>
   );
