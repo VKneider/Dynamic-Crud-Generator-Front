@@ -1,237 +1,294 @@
 {
   "status": "SUCCESS",
   "catalog": {
-    "cintas": [
+    "categoria": [
       {
-        "fieldName": "pelicula_id",
+        "fieldName": "id_categoria",
         "type": "number",
-        "isForeign": false
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
       },
       {
-        "fieldName": "id",
+        "fieldName": "nombre_categoria",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "ciudad": [
+      {
+        "fieldName": "id_ciudad",
         "type": "number",
-        "isForeign": true
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
       },
       {
-        "fieldName": "estado",
+        "fieldName": "nombre_ciudad",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_estado",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      }
+    ],
+    "cliente": [
+      {
+        "fieldName": "id_cliente",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "nombre_cliente",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "apellido_cliente",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "es_socio",
         "type": "boolean",
-        "isForeign": false
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_direccion",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
       }
     ],
-    "peliculas_actores": [
+    "compra": [
       {
-        "fieldName": "actor_id",
+        "fieldName": "id_compra",
         "type": "number",
-        "isForeign": false
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
       },
       {
-        "fieldName": "pelicula_id",
+        "fieldName": "id_distribuidor",
         "type": "number",
-        "isForeign": false
-      }
-    ],
-    "lista_espera": [
-      {
-        "fieldName": "socio_id",
-        "type": "number",
-        "isForeign": false
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
       },
       {
-        "fieldName": "pelicula_id",
-        "type": "number",
-        "isForeign": false
-      }
-    ],
-    "socios": [
-      {
-        "fieldName": "id",
-        "type": "number",
-        "isForeign": true
-      },
-      {
-        "fieldName": "nombres",
-        "type": "string",
-        "isForeign": false
-      },
-      {
-        "fieldName": "apellidos",
-        "type": "string",
-        "isForeign": false
-      }
-    ],
-    "socios_generos": [
-      {
-        "fieldName": "socio_id",
-        "type": "number",
-        "isForeign": false
-      },
-      {
-        "fieldName": "genero_id",
-        "type": "number",
-        "isForeign": false
-      }
-    ],
-    "generos": [
-      {
-        "fieldName": "id",
-        "type": "number",
-        "isForeign": true
-      },
-      {
-        "fieldName": "nombre",
-        "type": "string",
-        "isForeign": false
-      }
-    ],
-    "peliculas": [
-      {
-        "fieldName": "id",
-        "type": "number",
-        "isForeign": true
-      },
-      {
-        "fieldName": "duracion",
-        "type": "number",
-        "isForeign": false
-      },
-      {
-        "fieldName": "director_id",
-        "type": "number",
-        "isForeign": false
-      },
-      {
-        "fieldName": "titulo",
-        "type": "string",
-        "isForeign": false
-      }
-    ],
-    "peliculas_generos": [
-      {
-        "fieldName": "pelicula_id",
-        "type": "number",
-        "isForeign": false
-      },
-      {
-        "fieldName": "genero_id",
-        "type": "number",
-        "isForeign": false
-      }
-    ],
-    "prestamos": [
-      {
-        "fieldName": "socio_id",
-        "type": "number",
-        "isForeign": false
-      },
-      {
-        "fieldName": "cinta_id",
-        "type": "number",
-        "isForeign": false
-      },
-      {
-        "fieldName": "fecha",
+        "fieldName": "fecha_de_compra",
         "type": "Date",
-        "isForeign": false
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "compra_producto": [
+      {
+        "fieldName": "id_compra",
+        "type": "number",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "sku_producto",
+        "type": "string",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "cantidad_producto",
+        "type": "number",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "datos_cliente": [
+      {
+        "fieldName": "id_cliente",
+        "type": "number",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "correo_cliente",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "telefono_cliente",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "direccion": [
+      {
+        "fieldName": "id_direccion",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "calle",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "n_casa",
+        "type": "number",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_ciudad",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      }
+    ],
+    "distribuidor": [
+      {
+        "fieldName": "id_distribuidor",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "nombre_distribuidor",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      }
+    ],
+    "estado": [
+      {
+        "fieldName": "id_estado",
+        "type": "number",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
+      },
+      {
+        "fieldName": "nombre_estado",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
       }
     ],
     "log": [
       {
         "fieldName": "id_log",
         "type": "number",
-        "isForeign": false
-      },
-      {
-        "fieldName": "type",
-        "type": "string",
-        "isForeign": false
-      },
-      {
-        "fieldName": "obj",
-        "type": "string",
-        "isForeign": false
-      },
-      {
-        "fieldName": "method",
-        "type": "string",
-        "isForeign": false
-      },
-      {
-        "fieldName": "msg",
-        "type": "string",
-        "isForeign": false
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
       },
       {
         "fieldName": "log_time",
         "type": "string",
-        "isForeign": false
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "type",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "obj",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "method",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "msg",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
       }
     ],
-    "socios_directores": [
+    "producto": [
       {
-        "fieldName": "socio_id",
-        "type": "number",
-        "isForeign": false
+        "fieldName": "sku",
+        "type": "string",
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": false
       },
       {
-        "fieldName": "director_id",
+        "fieldName": "nombre_producto",
+        "type": "string",
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "precio",
         "type": "number",
-        "isForeign": false
+        "constraint_type": "ninguna",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_categoria",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
+      },
+      {
+        "fieldName": "id_distribuidor",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
       }
     ],
-    "directores": [
+    "venta": [
       {
-        "fieldName": "id",
+        "fieldName": "id_venta",
         "type": "number",
-        "isForeign": true
+        "constraint_type": "PRIMARY KEY",
+        "is_serial": true
       },
       {
-        "fieldName": "nombres",
-        "type": "string",
-        "isForeign": false
+        "fieldName": "id_cliente",
+        "type": "number",
+        "constraint_type": "FOREIGN KEY",
+        "is_serial": false
       },
       {
-        "fieldName": "apellidos",
-        "type": "string",
-        "isForeign": false
-      },
-      {
-        "fieldName": "sexo",
-        "type": "string",
-        "isForeign": false
+        "fieldName": "fecha_de_venta",
+        "type": "Date",
+        "constraint_type": "ninguna",
+        "is_serial": false
       }
     ],
-    "socios_actores": [
+    "venta_producto": [
       {
-        "fieldName": "socio_id",
+        "fieldName": "id_venta",
         "type": "number",
-        "isForeign": false
+        "constraint_type": "ambas",
+        "is_serial": false
       },
       {
-        "fieldName": "actor_id",
+        "fieldName": "sku_producto",
+        "type": "string",
+        "constraint_type": "ambas",
+        "is_serial": false
+      },
+      {
+        "fieldName": "cantidad_producto",
         "type": "number",
-        "isForeign": false
-      }
-    ],
-    "actores": [
-      {
-        "fieldName": "id",
-        "type": "number",
-        "isForeign": true
-      },
-      {
-        "fieldName": "nombres",
-        "type": "string",
-        "isForeign": false
-      },
-      {
-        "fieldName": "apellidos",
-        "type": "string",
-        "isForeign": false
-      },
-      {
-        "fieldName": "sexo",
-        "type": "string",
-        "isForeign": false
+        "constraint_type": "ninguna",
+        "is_serial": false
       }
     ]
   },

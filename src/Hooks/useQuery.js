@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import useFetch from './useFetch';
 
 export default function useQuery() {
-  const { loading, data, error, fetchData } = useFetch(
+  const { data, error, fetchData } = useFetch(
     'http://localhost:3003/runCustomQuery',
   );
 
   const [rows, setRows] = useState([]);
   const [columns, setColumns] = useState([]);
+  const [status, setStatus] = useState('');
   const runQuery = async (query) => {
-    // eslint-disable-next-line
     await fetchData('POST', { customQuery: query });
   };
 
@@ -31,8 +31,9 @@ export default function useQuery() {
 
       setColumns(updatedColumns);
       setRows(updatedRows);
+      setStatus('success');
     }
   }, [data]);
 
-  return { rows, columns, error, runQuery };
+  return { rows, status, columns, error, runQuery };
 }

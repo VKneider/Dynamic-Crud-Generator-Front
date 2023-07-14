@@ -1,16 +1,14 @@
 import Styles from './Query.module.css';
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
+
 import { Box, Button, TextField, Alert, AlertTitle } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import useQuery from '../../Hooks/useQuery';
 
 export default function Query() {
-  const [query, setQuery] = useState('');
   const [inputText, setInputText] = useState('');
   const queryRef = useRef();
   const { rows, columns, runQuery, error } = useQuery();
-
-  console.log('error', error);
 
   function handleChange(e) {
     setInputText(e.target.value);
