@@ -1,5 +1,6 @@
 import MenuSelect from '../MenuSelect/MenuSelect';
 import MenuInputs from '../MenuInputs/MenuInputs';
+import { InputSelectContextProvider } from '../../Context/inputSelectContext';
 import { Button } from '@mui/material';
 
 export default function Menu() {
@@ -11,7 +12,9 @@ export default function Menu() {
         <Button variant='text'>Save</Button>
         <Button variant='text'>Delete</Button>
       </div>
-      <MenuInputs />
+      <InputSelectContextProvider>
+        <MenuInputs />
+      </InputSelectContextProvider>
     </>
   );
 }
